@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  webpreloader:
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+    ports:
+      - "8088:8080"
+      - "8090:8090"
+    volumes:
+      - ./lib:/var/www/html/lib
+      - ./build/config/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
+      - ./build/config/php/php.override.ini:/usr/local/etc/php/conf.d/php.override.ini:ro
+      - ./build/config/php/fpm-dev.conf:/usr/local/etc/php-fpm.d/zdev.conf:ro
+      - ./build/config/nginx/serverListen.dev.conf:/etc/nginx/serverListen.conf:ro
+      - ./build/entrypoint.dev.sh:/usr/local/bin/docker-php-entrypoint-dev
+    environment:
+      APP_ENV: dev
+    privileged: true
