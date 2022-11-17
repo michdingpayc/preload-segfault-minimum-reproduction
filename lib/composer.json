@@ -1,0 +1,21 @@
+{
+  "name": "dingess/preload-segfault-minimum-reproduction",
+  "description": "A minimum project for reproducing a segmentation fault occurring during OPCache preloading with PHP 8.1",
+  "license": "proprietary",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "classmap": [
+      "packages/Root1/src/"
+    ],
+    "psr-0": {
+      "Root2_": "src/"
+    }
+  },
+  "repositories": [
+    {
+      "packagist": false
+    }
+  ]
+}
